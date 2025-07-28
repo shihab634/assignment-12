@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 const DonorDashboard = () => {
   const { user } = use(AuthContext);
-  const { data } = useDonationRequest();
+  const { data, setData } = useDonationRequest();
   const monchaise = useMonchaise();
   // console.log(data);
   if (!data) {
@@ -47,11 +47,15 @@ const DonorDashboard = () => {
       if (result.isConfirmed) {
         monchaise.delete(`request-delete/${id}`).then((res) => {
           console.log(res.data);
-          if (res.data.deleteCount) {
+          if (res.data.deletedCount) {
+            const filtered = data.filter((x) => x._id != id);
+            setData(filtered);
             Swal.fire({
               title: "Deleted!",
               text: "Your file has been deleted.",
               icon: "success",
+              showConfirmButton: false,
+              timer: 1000,
             });
           }
         });
@@ -78,7 +82,7 @@ const DonorDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((request, index) => (
+            {data.slice(0,3).map((request, index) => (
               <tr className="hover:bg-base-300" key={index}>
                 <th>{index + 1}</th>
                 <td>Cy Ganderton</td>
@@ -107,12 +111,16 @@ const DonorDashboard = () => {
                       </button>
                     </div>
                   ) : (
-                    <button
+                    <div className="join join-vertical">
+                      <button
                       onClick={() => handleDelete(request._id)}
                       className="btn bg-red-800 join-item"
                     >
                       Delete
                     </button>
+                     <Link to={`donation-request-details/${request}`}><button className="btn join-item">View</button></Link>
+                    </div>
+                    
                   )}
                 </td>
               </tr>
