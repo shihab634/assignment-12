@@ -2,17 +2,66 @@ import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import useDonationRequest from "../hooks/useDonationRequest";
 import { AuthContext } from "../providers/AuthProvider";
+import axios from "axios";
+import useMonchaise from "../hooks/useMonchaise";
+import { toast, ToastContainer } from "react-toastify";
+import Swal from "sweetalert2";
 
 const DonorDashboard = () => {
   const { user } = use(AuthContext);
   const { data } = useDonationRequest();
-  console.log(data);
+  const monchaise = useMonchaise();
+  // console.log(data);
   if (!data) {
     return <p className="text-2xl text-green-500">Loading</p>;
   }
-  
+  const handleCancel = (id) => {
+    console.log(id);
+    monchaise.patch(`/cancel-request-status/${id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount) {
+        toast("Canceled");
+      }
+    });
+  };
+  const handleDone = (id) => {
+    console.log(id);
+    monchaise.patch(`/change-request-status/${id}`).then((res) => {
+      console.log(res.data);
+      if (res.data.modifiedCount) {
+        toast("Done");
+      }
+    });
+  };
+  const handleDelete = (id) => {
+    // console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        monchaise.delete(`request-delete/${id}`).then((res) => {
+          console.log(res.data);
+          if (res.data.deleteCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
+
   return (
     <div className="w-11/12 mx-auto">
+      <ToastContainer autoClose={500} />
       <p className="text-3xl text-center text-black my-4">
         Welcome Mr.{user?.displayName}
       </p>
@@ -36,15 +85,34 @@ const DonorDashboard = () => {
                 <td>Quality Control Specialist</td>
                 <td>Blue</td>
                 <td>
-                  {request?.status == "inprogress" && (
+                  {request?.status == "inprogress" ? (
                     <div className="join join-vertical">
-                      <button onClick={handleDone} className="btn  btn-success join-item">
+                      <button
+                        onClick={() => handleDone(request._id)}
+                        className="btn  btn-success join-item"
+                      >
                         Done
                       </button>
-                      <button onClick={handleCancel} className="btn btn-warning join-item">
+                      <button
+                        onClick={() => handleCancel(request._id)}
+                        className="btn btn-error join-item"
+                      >
                         Cancel
                       </button>
+                      <button
+                        onClick={() => handleDelete(request._id)}
+                        className="btn bg-red-800 join-item"
+                      >
+                        Delete
+                      </button>
                     </div>
+                  ) : (
+                    <button
+                      onClick={() => handleDelete(request._id)}
+                      className="btn bg-red-800 join-item"
+                    >
+                      Delete
+                    </button>
                   )}
                 </td>
               </tr>
