@@ -15,7 +15,7 @@ const useRoleByEmail = () => {
     .then((res) => {
       // console.log(res.data);
       
-      setRole(res.data.data);
+      setRole(res.data.role);
       setStatus(res.data.status)
       setLoading(false);
     });

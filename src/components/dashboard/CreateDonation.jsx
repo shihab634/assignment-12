@@ -32,6 +32,7 @@ else{
     const formData = new FormData(form)
     const objectData = Object.fromEntries(formData.entries())
     objectData.status = 'pending'
+    objectData.createdAt= new Date()
     // console.log(objectData);
     axios.post('http://localhost:3000/donation-request',objectData).then(res=>{
       if(res.data.insertedId){

@@ -7,10 +7,10 @@ import DonorDashboard from '../components/DonorDashboard';
 
 const Dashboard = () => {
   const {role,loading} = useRoleByEmail()
-  console.log(loading);
+  // console.log(loading);
   // console.log(role);
   if(!role){
-    return <p className="">loading</p>
+    return <p className="text-black text-7xl">loading</p>
   }
 
 if (loading) {
