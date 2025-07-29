@@ -12,6 +12,7 @@ import CreateDonation from "../components/dashboard/CreateDonation";
 import Profile from "../components/dashboard/Profile";
 import RequestDetails from "../components/dashboard/RequestDetails";
 import RequestDetailsEdit from "../components/dashboard/RequestDetailsEdit";
+import PrivateRoute from "./PrivateRoute";
 
 
 const mainRoutes = createBrowserRouter([
@@ -35,7 +36,7 @@ const mainRoutes = createBrowserRouter([
    
     {
       path:'/dashboard',
-      element:<DashboardLayout></DashboardLayout>,
+      element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
       children:[
         {
           index:true,

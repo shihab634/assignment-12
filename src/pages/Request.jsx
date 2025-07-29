@@ -115,13 +115,13 @@ const Request = () => {
                       <button className="btn join-item">Edit</button>
                       <Link
                         className="btn join-item btn-info"
-                        to={`donation-request-details/${request._id}`}
+                        to={`../donation-request-details/${request._id}`}
                       >
                         View
                       </Link>
                       <Link
                         className="btn join-item btn-accent"
-                        to={`donation-request-details-edit/${request._id}`}
+                        to={`../donation-request-details-edit/${request._id}`}
                       >
                         Edit
                       </Link>
@@ -136,13 +136,13 @@ const Request = () => {
                       </button>
                       <Link
                         className="btn join-item btn-info"
-                        to={`donation-request-details/${request._id}`}
+                        to={`../donation-request-details/${request._id}`}
                       >
                         View
                       </Link>
                       <Link
                         className="btn join-item btn-accent"
-                        to={`donation-request-details-edit/${request._id}`}
+                        to={`../donation-request-details-edit/${request._id}`}
                       >
                         Edit
                       </Link>

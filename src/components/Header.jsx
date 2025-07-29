@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CgMenuMotion } from "react-icons/cg";
 import { RiMenuAddLine } from "react-icons/ri";
 import { Link, NavLink } from "react-router";
@@ -8,7 +8,9 @@ import { AuthContext } from "../providers/AuthProvider";
 const Header = () => {
   // const {role,loading} = useRoleByEmail()
   // console.log(role,loading);
-  
+  // useEffect(()=>{
+    
+  // },[])
   const { user, logOut } = useContext(AuthContext);
   // console.log(user);
 // const  menuItems =[]

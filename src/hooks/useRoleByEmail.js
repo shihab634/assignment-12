@@ -9,6 +9,7 @@ const useRoleByEmail = () => {
   const [loading, setLoading] = useState(true);
   const [role, setRole] = useState(null);
   const [status,setStatus] = useState(null)
+  const [donor,setDonor] = useState(null)
  useEffect(()=>{
    axios
     .get(`http://localhost:3000/get-user-role?email=${user?.email}`)
@@ -17,10 +18,11 @@ const useRoleByEmail = () => {
       
       setRole(res.data.role);
       setStatus(res.data.status)
+      setDonor(res.data)
       setLoading(false);
     });
  },[user?.email,status,loading])
-  return { role, loading,status };
+  return { role, loading,status,donor };
 };
 
 export default useRoleByEmail;

@@ -11,13 +11,13 @@ const Register = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const { password, avatar, ...data } = Object.fromEntries(
+    const { password, ...data } = Object.fromEntries(
       formData.entries()
     );
     data.status = "active";
     data.loginCount = 1;
     data.role = "donor";
-    const { name, email } = data;
+    const { name, email,photoURL } = data;
     // console.log(object);
     // console.log(name, email, password);
     console.log(data);
@@ -31,7 +31,7 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         console.log(res.user);
-        updateUser({ displayName: name, photoURL: avatar });
+        updateUser({ displayName: name, photoURL: photoURL });
       })
       .catch((error) => {
         console.log(error);
@@ -59,7 +59,7 @@ const Register = () => {
             />
             <label className="label">Avatar</label>
             <input
-              name="avatar"
+              name="photoURL"
               type=""
               className="input"
               placeholder="Avatar"
