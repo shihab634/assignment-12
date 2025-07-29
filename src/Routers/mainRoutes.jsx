@@ -13,6 +13,7 @@ import Profile from "../components/dashboard/Profile";
 import RequestDetails from "../components/dashboard/RequestDetails";
 import RequestDetailsEdit from "../components/dashboard/RequestDetailsEdit";
 import PrivateRoute from "./PrivateRoute";
+import AllUsers from "../pages/Admin/AllUsers";
 
 
 const mainRoutes = createBrowserRouter([
@@ -63,6 +64,10 @@ const mainRoutes = createBrowserRouter([
           path:'donation-request-details/:id',
           loader:({params})=> fetch(`http://localhost:3000/single-request/${params.id}`),
           element:<RequestDetails></RequestDetails>
+        },
+        {
+          path:'all-users',
+          element:<AllUsers></AllUsers>
         }
       ]
     }
