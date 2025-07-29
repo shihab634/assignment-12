@@ -75,19 +75,32 @@ const DonorDashboard = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Recipient Name & Location</th>
+              <th>Donation Date & Time</th>
+              <th>Blood Group</th>
+              <th>Donor Name & Email</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {data.slice(0, 3).map((request, index) => (
+            {data?.slice(0,3).map((request, index) => (
               <tr className="hover:bg-base-300" key={index}>
                 <th>{index + 1}</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
+                <td>
+                  {request.recipientName}
+                  <br />
+                  District: {request.district} Upazila: {request.upazila}{" "}
+                </td>
+                <td>
+                  {request.date} <br />
+                  {request.time}
+                </td>
+                <td>{request.bloodGroup}</td>
+                {request.status == "inprogress" ? (
+                  <td>Donor Name</td>
+                ) : (
+                  <td></td>
+                )}
                 <td>
                   {request?.status == "inprogress" ? (
                     <div className="join join-vertical">
@@ -150,6 +163,13 @@ const DonorDashboard = () => {
             ))}
           </tbody>
         </table>
+        <div className="flex justify-center items-center mt-5">
+          <Link to={"my-donation-requests"}>
+            <button className="btn  px-60  btn-outline btn-primary">
+              Wide
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
