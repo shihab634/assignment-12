@@ -1,15 +1,15 @@
 import React from 'react';
 import { useLoaderData } from 'react-router';
 
-const RequestDetails = () => {
+const RequestDetailsEdit = () => {
   const data = useLoaderData()
   console.log(data);
   
   return (
     <div>
-      ffef
+      edit
     </div>
   );
 };
 
-export default RequestDetails;
+export default RequestDetailsEdit;

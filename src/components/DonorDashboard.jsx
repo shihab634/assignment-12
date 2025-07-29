@@ -82,7 +82,7 @@ const DonorDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {data.slice(0,3).map((request, index) => (
+            {data.slice(0, 3).map((request, index) => (
               <tr className="hover:bg-base-300" key={index}>
                 <th>{index + 1}</th>
                 <td>Cy Ganderton</td>
@@ -109,18 +109,41 @@ const DonorDashboard = () => {
                       >
                         Delete
                       </button>
+                      <button className="btn join-item">Edit</button>
+                      <Link
+                        className="btn join-item btn-info"
+                        to={`donation-request-details/${request._id}`}
+                      >
+                        View
+                      </Link>
+                      <Link
+                        className="btn join-item btn-accent"
+                        to={`donation-request-details-edit/${request._id}`}
+                      >
+                        Edit
+                      </Link>
                     </div>
                   ) : (
                     <div className="join join-vertical">
                       <button
-                      onClick={() => handleDelete(request._id)}
-                      className="btn bg-red-800 join-item"
-                    >
-                      Delete
-                    </button>
-                     <Link to={`donation-request-details/${request}`}><button className="btn join-item">View</button></Link>
+                        onClick={() => handleDelete(request._id)}
+                        className="btn bg-red-800 join-item"
+                      >
+                        Delete
+                      </button>
+                      <Link
+                        className="btn join-item btn-info"
+                        to={`donation-request-details/${request._id}`}
+                      >
+                        View
+                      </Link>
+                      <Link
+                        className="btn join-item btn-accent"
+                        to={`donation-request-details-edit/${request._id}`}
+                      >
+                        Edit
+                      </Link>
                     </div>
-                    
                   )}
                 </td>
               </tr>
