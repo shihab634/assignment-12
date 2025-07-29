@@ -9,19 +9,19 @@ const Header = () => {
   // const {role,loading} = useRoleByEmail()
   // console.log(role,loading);
   // useEffect(()=>{
-    
+
   // },[])
   const { user, logOut } = useContext(AuthContext);
   // console.log(user);
-// const  menuItems =[]
-//   if(loading){
-//     return <p className="">loading</p>
-//   }
-//   if (role == 'admin') {
-//     menuItems.push(
-//       <li><NavLink to={'/dashboard/profile'}>Dashboard</NavLink></li>
-//     )
-//   }
+  // const  menuItems =[]
+  //   if(loading){
+  //     return <p className="">loading</p>
+  //   }
+  //   if (role == 'admin') {
+  //     menuItems.push(
+  //       <li><NavLink to={'/dashboard/profile'}>Dashboard</NavLink></li>
+  //     )
+  //   }
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPageLoad, setisPageLoad] = useState(false);
   const menu = [
@@ -29,8 +29,6 @@ const Header = () => {
       name: "Home",
       path: "/",
     },
-
-    
   ];
   return (
     <nav className="overflow-x-clip">
@@ -41,7 +39,7 @@ const Header = () => {
         </p>
       )}
       <div className="text-center bg-slate-400"></div>
-      <div className="w-11/12 mx-auto py-5 flex justify-between items-center relative">
+      <div className="w-11/12 mx-auto py-5 flex justify-between items-center relative ">
         <Link to="/" className="logo">
           <span className="text-xl font-bold text-stone-700">
             Auth 🍳 Template
@@ -57,9 +55,12 @@ const Header = () => {
           ))}
           {user && user?.email ? (
             <>
-             
               <NavLink to="/dashboard">Dashboard</NavLink>
-              
+              <NavLink to="/search">Search Page</NavLink>
+              <NavLink to="/donation-requests">Blood Donation Requests</NavLink>
+              <NavLink to="/blog">Blog</NavLink>
+              <NavLink to="/">Funding</NavLink>
+
               <div className="avatar">
                 <div className="w-10">
                   <img src={user.photoURL} />
@@ -71,14 +72,17 @@ const Header = () => {
             </>
           ) : (
             <>
+              <NavLink to="/search">Search Page</NavLink>
+              <NavLink to="/donation-requests">Blood Donation Requests</NavLink>
+              <NavLink to="/blog">Blog</NavLink>
+              <NavLink to="/">Funding</NavLink>
               <NavLink to="/login">Login</NavLink>
               <NavLink to="/registration">Register</NavLink>
             </>
           )}
-          
         </ul>
 
-        <div className="lg:hidden ">
+        <div className="lg:hidden text-black ">
           {!isMenuOpen ? (
             <RiMenuAddLine
               onClick={() => {
@@ -119,14 +123,24 @@ const Header = () => {
                   <button className="cursor-pointer" onClick={logOut}>
                     Logout
                   </button>
+                  <NavLink to="/search">Search Page</NavLink>
+                  <NavLink to="/donation-requests">
+                    Blood Donation Requests
+                  </NavLink>
+                  <NavLink to="/blog">Blog</NavLink>
+                  <NavLink to="/">Funding</NavLink>
 
-                  <NavLink to="/addFood">Add Food</NavLink>
-                  <NavLink to="/manageFoods">Manage My Foods</NavLink>
-                  <NavLink to="/foodReq">My Food Request</NavLink>
                   <NavLink to="/dashboard">Dashboard</NavLink>
                 </>
               ) : (
                 <>
+                  
+                  <NavLink to="/search">Search Page</NavLink>
+                  <NavLink to="/donation-requests">
+                    Blood Donation Requests
+                  </NavLink>
+                  <NavLink to="/blog">Blog</NavLink>
+                  <NavLink to="/">Funding</NavLink>
                   <NavLink to="/login">Login</NavLink>
                   <NavLink to="/registration">Register</NavLink>
                 </>

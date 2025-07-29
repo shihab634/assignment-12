@@ -20,7 +20,6 @@ export default function DashboardSidebar() {
 
   const { role, loading } = useRoleByEmail();
 
-  
   if (loading) return <h1>Loading...</h1>;
 
   if (role === "admin")
@@ -37,29 +36,35 @@ export default function DashboardSidebar() {
           label="All Users"
         />
         <NavItem
-          to="/dashboard/my-books"
+          to="/dashboard/all-blood-donation-request"
           // icon={<List size={20} />}
-          label="My Books"
+          label="All Blood Donation Request Page"
         />
         <NavItem
-          to="/dashboard/my-requests"
+          to="/dashboard/content-management"
           // icon={<BookOpen size={20} />}
-          label="My Requests"
-        />
-        <NavItem
-          to="/dashboard/profile"
-          // icon={<User size={20} />}
-          label="Profile"
+          label="Content Management Page 📝
+"
         />
       </nav>
     );
-  if (role === "moderator")
+  if (role === "volunteer")
     return (
       <nav className="flex flex-col gap-4">
         <NavItem
           to="/dashboard"
           // icon={<Home size={20} />}
-          label="Moderator Dashboard"
+          label="Moderator Home"
+        />
+        <NavItem
+          to="/dashboard/all-blood-donation-request"
+          // icon={<Home size={20} />}
+          label="All Blood Donation Request Page"
+        />
+        <NavItem
+          to="/dashboard/content-management"
+          // icon={<Home size={20} />}
+          label="Content Management Page"
         />
       </nav>
     );

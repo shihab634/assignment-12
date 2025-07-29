@@ -1,63 +1,61 @@
 import React, { useEffect, useState } from "react";
-import useAxiosSecure from "../hooks/useAxiosSecure";
+import useMonchaise from "../hooks/useMonchaise";
+import { IoPeople } from "react-icons/io5";
+import { ClipboardClock, ShoppingBag, Users } from "lucide-react";
+import useAllRequests from "../hooks/useAllRequests";
 
 const AdminDashboard = () => {
-  const [users, setUsers] = useState(null);
-  const axiosSecure = useAxiosSecure();
+  const [data, setData] = useState(null);
   useEffect(() => {
-    axiosSecure("/get-users").then(({ data }) => setUsers(data));
+    const monchaise = useMonchaise();
+    monchaise.get("admin-all-donors").then((res) => {
+      console.log(res.data);
+      setData(res.data);
+    });
   }, []);
-  console.log(users);
-  if (!users) {
-    return <p>loading</p>;
+  const { requests } = useAllRequests();
+  // console.log(requests);
+
+  if (!data) {
+    return <p className="">loading</p>;
   }
-const handleChange = (e,email)=>{
-  const role = e.target.value
-  console.log(role,email);
-  axiosSecure.patch('change-role',{role,email}).then(({data})=>{
-    // console.log(data);
-    if (data.modifiedCount) {
-      alert('role successfully changed')
-    }
-    
-  })
-  
-}
   return (
-    <div className="overflow-x-auto">
-      <table className="table">
-        {/* head */}
-        <thead>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* row 1 */}
-          {users.map((user) => (
-            <tr key={user._id}>
-              <th>1</th>
-              <td>{user.email}</td>
-              <td>{user.role}</td>
-              <td>
-                <select
-                  defaultValue={user.role}
-                  className="select select-ghost"
-                  onChange={(e)=>handleChange(e,user.email)}
-                >
-                  <option disabled={true}>{user.role}</option>
-                  <option value={"user"}>user</option>
-                  <option value={'admin'}>admin</option>
-                  <option value={'moderator'}>moderator</option>
-                </select>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="bg-white rounded-2xl shadow-md p-6 flex items-center justify-between max-w-md w-full">
+        <div className="bg-purple-100 p-3 rounded-xl">
+          <Users className="text-purple-600 w-6 h-6" size={48} />
+        </div>
+
+        <div className="text-right">
+          <p className="text-gray-500 text-sm">Total Donors</p>
+          <h2 className="text-2xl font-bold text-gray-800">{data.length}</h2>
+          {/* <p className="text-sm text-gray-500">
+          Increase by{" "}
+          <span className="text-green-600 font-semibold bg-green-100 px-2 py-0.5 rounded-md">
+            +4.2%
+          </span>{" "}
+          this month
+        </p> */}
+        </div>
+      </div>
+      <div className="bg-white rounded-2xl shadow-md p-6 flex items-center justify-between max-w-md w-full">
+        <div className="bg-purple-100 p-3 rounded-xl">
+          <ClipboardClock className="text-purple-600 w-6 h-6" />
+          {/* < /> */}
+        </div>
+
+        <div className="text-right">
+          <p className="text-gray-500 text-sm">Total Requests</p>
+          <h2 className="text-2xl font-bold text-gray-800">{requests.length}</h2>
+          {/* <p className="text-sm text-gray-500">
+          Increase by{" "}
+          <span className="text-green-600 font-semibold bg-green-100 px-2 py-0.5 rounded-md">
+            +4.2%
+          </span>{" "}
+          this month
+        </p> */}
+        </div>
+      </div>
     </div>
   );
 };
