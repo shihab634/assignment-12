@@ -94,10 +94,6 @@ else{
         <input type="text" className="input input-bordered" name="hospital" required />
       </div>
 
-      <div className="form-control">
-        <label className="label">Full Address</label>
-        <input type="text" className="input input-bordered" name="address"  required />
-      </div>
 
       <div className="form-control">
         <label className="label">Blood Group</label>
