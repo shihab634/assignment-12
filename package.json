@@ -11,8 +11,9 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
-    "axios": "^1.10.0",
+    "axios": "^1.11.0",
     "firebase": "^11.10.0",
+    "jodit-react": "^5.2.19",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.533.0",
     "react": "^19.1.0",

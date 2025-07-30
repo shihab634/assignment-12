@@ -79,6 +79,7 @@ const DonorDashboard = () => {
               <th>Donation Date & Time</th>
               <th>Blood Group</th>
               <th>Donor Name & Email</th>
+              {/* <th>Status</th> */}
               <th>Actions</th>
             </tr>
           </thead>
@@ -122,7 +123,7 @@ const DonorDashboard = () => {
                       >
                         Delete
                       </button>
-                      <button className="btn join-item">Edit</button>
+                      
                       <Link
                         className="btn join-item btn-info"
                         to={`donation-request-details/${request._id}`}

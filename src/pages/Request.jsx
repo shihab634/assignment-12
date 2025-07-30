@@ -78,6 +78,7 @@ const Request = () => {
               <th>Donation Date & Time</th>
               <th>Blood Group</th>
               <th>Donor Name & Email</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -91,6 +92,7 @@ const Request = () => {
                 {
                   request.status =='inprogress'?<td>Donor Name</td>:<td></td>
                 }
+                <th>{request.status}</th>
                 <td>
                   {request?.status == "inprogress" ? (
                     <div className="join join-vertical">

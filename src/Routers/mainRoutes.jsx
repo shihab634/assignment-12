@@ -15,6 +15,9 @@ import RequestDetailsEdit from "../components/dashboard/RequestDetailsEdit";
 import PrivateRoute from "./PrivateRoute";
 import AllUsers from "../pages/Admin/AllUsers";
 import AllRequests from "../pages/Admin/AllRequests";
+import ContentManagement from "../pages/Admin/ContentManagement";
+import AddBlog from "../pages/Admin/AddBlog";
+import AdminVol from "../pages/AdminVolRouting/AdminVol";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -77,7 +80,15 @@ const mainRoutes = createBrowserRouter([
           },
           {
             path:'all-blood-donation-request',
-            element:<AllRequests></AllRequests>
+            element:<AdminVol></AdminVol>
+          },
+          {
+            path:'content-management',
+            element:<ContentManagement></ContentManagement>
+          },
+          {
+            path:'content-management/add-blog',
+            element:<AddBlog></AddBlog>
           }
         ],
       },

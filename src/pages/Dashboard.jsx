@@ -4,6 +4,7 @@ import { Navigate } from 'react-router';
 import AdminDashboard from './AdminDashboard';
 import useRoleByEmail from '../hooks/useRoleByEmail';
 import DonorDashboard from '../components/DonorDashboard';
+import ModeratorDashboard from './Moderator/ModeratorDashboard';
 
 const Dashboard = () => {
   const {role,loading} = useRoleByEmail()
@@ -25,8 +26,8 @@ if (loading) {
     return <AdminDashboard></AdminDashboard>
     
   }
-  if (role == 'moderate') {
-    return <div className="">moderate Dashboard</div>
+  if (role == 'volunteer') {
+    return <ModeratorDashboard></ModeratorDashboard>
     
   }
   return (

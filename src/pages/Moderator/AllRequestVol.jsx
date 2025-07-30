@@ -2,12 +2,12 @@ import React, { use } from "react";
 import useAllRequests from "../../hooks/useAllRequests";
 import useMonchaise from "../../hooks/useMonchaise";
 import { toast, ToastContainer } from "react-toastify";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router";
 
-const AllRequests = () => {
-  const { requests, setRequests,setCount } = useAllRequests();
+const AllRequestVol = () => {
+  const { requests,setCount } = useAllRequests();
   const {user} = use(AuthContext)
   
   const monchaise = useMonchaise();
@@ -37,35 +37,7 @@ const AllRequests = () => {
       }
     });
   };
-  const handleDelete = (id) => {
-    // console.log(id);
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        monchaise.delete(`request-delete/${id}`).then((res) => {
-          console.log(res.data);
-          if (res.data.deletedCount) {
-            const filtered = requests.filter((x) => x._id != id);
-            setRequests(filtered);
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-              showConfirmButton: false,
-              timer: 1000,
-            });
-          }
-        });
-      }
-    });
-  };
+ 
 
   return (
     <div className="w-11/12 mx-auto">
@@ -113,45 +85,13 @@ const AllRequests = () => {
                       >
                         Cancel
                       </button>
-                      <button
-                        onClick={() => handleDelete(request._id)}
-                        className="btn bg-red-800 join-item"
-                      >
-                        Delete
-                      </button>
-                      <Link
-                        className="btn join-item btn-info"
-                        to={`../donation-request-details/${request._id}`}
-                      >
-                        View
-                      </Link>
-                      <Link
-                        className="btn join-item btn-accent"
-                        to={`../donation-request-details-edit/${request._id}`}
-                      >
-                        Edit
-                      </Link>
+
                     </div>
                   ) : (
                     <div className="join join-vertical">
-                      <button
-                        onClick={() => handleDelete(request._id)}
-                        className="btn bg-red-800 join-item"
-                      >
-                        Delete
-                      </button>
-                      <Link
-                        className="btn join-item btn-info"
-                        to={`../donation-request-details/${request._id}`}
-                      >
-                        View
-                      </Link>
-                      <Link
-                        className="btn join-item btn-accent"
-                        to={`../donation-request-details-edit/${request._id}`}
-                      >
-                        Edit
-                      </Link>
+                      
+                      
+                      
                     </div>
                   )}
                 </td>
@@ -171,4 +111,4 @@ const AllRequests = () => {
   );
 };
 
-export default AllRequests;
+export default AllRequestVol;
