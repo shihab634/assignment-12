@@ -51,7 +51,7 @@ const AuthProvider = ({ children }) => {
   const logOut = () => {
     return signOut(auth);
   };
-  
+
   // const axiosSecure = useAxiosSecure();
   useEffect(() => {
     // axiosPublic.get("/foods").then((res) => console.log(res.data));
@@ -66,10 +66,10 @@ const AuthProvider = ({ children }) => {
       //       email: currentUser.email,
       //       role: "user",
       //       loginCount: 1,
-      //     })  
+      //     })
       //     .then((res) => {
       //       console.log(res.data);
-            
+
       //     });
       // }
 
@@ -85,8 +85,6 @@ const AuthProvider = ({ children }) => {
       //     Authorization: `Bearer ${currentUser?.accessToken}`,
       //   },
       // })
-
-      
     });
     return () => {
       unsubscribe();

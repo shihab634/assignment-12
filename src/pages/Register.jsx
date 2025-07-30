@@ -11,19 +11,17 @@ const Register = () => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const { password, ...data } = Object.fromEntries(
-      formData.entries()
-    );
+    const { password, ...data } = Object.fromEntries(formData.entries());
     data.status = "active";
     data.loginCount = 1;
     data.role = "donor";
-    const { name, email,photoURL } = data;
+    const { name, email, photoURL } = data;
     // console.log(object);
     // console.log(name, email, password);
     console.log(data);
     axios.post("http://localhost:3000/register", data).then((res) => {
-      console.log(res.data)
-      
+      console.log(res.data);
+
       if (res.data.insertedId) {
         toast("Registered!");
       }

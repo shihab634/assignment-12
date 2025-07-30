@@ -4,7 +4,7 @@ import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Dashboard from '../pages/Dashboard'
+import Dashboard from "../pages/Dashboard";
 // import DasBoard from "../components/DasBoard";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Request from "../pages/Request";
@@ -14,7 +14,7 @@ import RequestDetails from "../components/dashboard/RequestDetails";
 import RequestDetailsEdit from "../components/dashboard/RequestDetailsEdit";
 import PrivateRoute from "./PrivateRoute";
 import AllUsers from "../pages/Admin/AllUsers";
-
+import AllRequests from "../pages/Admin/AllRequests";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -34,72 +34,82 @@ const mainRoutes = createBrowserRouter([
         path: "registration",
         element: <Register></Register>,
       },
-   
-    {
-      path:'/dashboard',
-      element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-      children:[
-        {
-          index:true,
-          element: <Dashboard></Dashboard>
-        },
-        {
-          path:'my-donation-requests',
-          element:<Request></Request>
-        },
-        {
-          path:'create-donation-request',
-          element:<CreateDonation></CreateDonation>
-        },
-        {
-          path:'profile',
-          element:<Profile></Profile>
-        },
-        {
-          path:'donation-request-details-edit/:id',
-          loader:({params})=>fetch(`http://localhost:3000/single-request/${params.id}`),
-          element:<RequestDetailsEdit></RequestDetailsEdit>
-        },
-        {
-          path:'donation-request-details/:id',
-          loader:({params})=> fetch(`http://localhost:3000/single-request/${params.id}`),
-          element:<RequestDetails></RequestDetails>
-        },
-        {
-          path:'all-users',
-          element:<AllUsers></AllUsers>
-        }
-      ]
-    }
+
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <DashboardLayout></DashboardLayout>
+          </PrivateRoute>
+        ),
+        children: [
+          {
+            index: true,
+            element: <Dashboard></Dashboard>,
+          },
+          {
+            path: "my-donation-requests",
+            element: <Request></Request>,
+          },
+          {
+            path: "create-donation-request",
+            element: <CreateDonation></CreateDonation>,
+          },
+          {
+            path: "profile",
+            element: <Profile></Profile>,
+          },
+          {
+            path: "donation-request-details-edit/:id",
+            loader: ({ params }) =>
+              fetch(`http://localhost:3000/single-request/${params.id}`),
+            element: <RequestDetailsEdit></RequestDetailsEdit>,
+          },
+          {
+            path: "donation-request-details/:id",
+            loader: ({ params }) =>
+              fetch(`http://localhost:3000/single-request/${params.id}`),
+            element: <RequestDetails></RequestDetails>,
+          },
+          {
+            path: "all-users",
+            element: <AllUsers></AllUsers>,
+          },
+          {
+            path:'all-blood-donation-request',
+            element:<AllRequests></AllRequests>
+          }
+        ],
+      },
     ],
   },
 ]);
 
 export default mainRoutes;
- //  {
-    //     path: "/dashboard",
-    //     element: <DashboardLayout />,
-    //     children: [
-    //       {
-    //         index: true,
-    //         element: <Dashboard />,
-    //       },
-          
-    //       {
-    //         path: "add-book",
-    //         element: <AddBooks />,
-    //       },
-    //       {
-    //         path: "all-users",
-    //         element: <AllUsers />,
-    //       },
-    //       {
-    //         path: "my-books",
-    //         element: <MyBooks />,
-    //       },
-    //       {
-    //         path: "my-requests",
-    //         element: <MyBooks />,
-    //       },
-    //     ],
-    //   },
+//  {
+//     path: "/dashboard",
+//     element: <DashboardLayout />,
+//     children: [
+//       {
+//         index: true,
+//         element: <Dashboard />,
+//       },
+
+//       {
+//         path: "add-book",
+//         element: <AddBooks />,
+//       },
+//       {
+//         path: "all-users",
+//         element: <AllUsers />,
+//       },
+//       {
+//         path: "my-books",
+//         element: <MyBooks />,
+//       },
+//       {
+//         path: "my-requests",
+//         element: <MyBooks />,
+//       },
+//     ],
+//   },
