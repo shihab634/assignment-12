@@ -28,7 +28,7 @@ const SingleRequest = () => {
   if (!formData) return <p>Loading...</p>;
 
   return (
-    <div className="p-4 max-w-xl  mx-auto border rounded">
+    <div className="p-4 my-10 max-w-xl  mx-auto border rounded">
       <ToastContainer autoClose={500} />
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold">Donation Request Details</h2>

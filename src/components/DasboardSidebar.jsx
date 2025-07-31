@@ -9,7 +9,7 @@ export default function DashboardSidebar() {
       className={({ isActive }) =>
         `flex items-center gap-3 px-4 py-2 rounded-lg font-medium ${
           isActive
-            ? "bg-blue-100 text-blue-600"
+            ? "bg-blue-100 text-red-800"
             : "text-gray-700 hover:bg-gray-200"
         }`
       }

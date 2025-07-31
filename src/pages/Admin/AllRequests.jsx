@@ -95,7 +95,7 @@ const AllRequests = () => {
                 <td>{request.date} <br />{request.time}</td>
                 <td>{request.bloodGroup}</td>
                 {
-                  request.status =='inprogress'?<td>Donor Name</td>:<td></td>
+                  request.status =='inprogress'?<div className="flex flex-col"><td>{request?.donorName}</td><td>{request?.donorEmail}</td></div>:<td></td>
                 }
                 <th>{request.status}</th>
                 <td>

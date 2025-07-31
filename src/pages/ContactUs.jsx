@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import useMonchaise from "../hooks/useMonchaise";
+// import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const ContactUs = () => {
+  const monchaise = useMonchaise();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,8 +16,18 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    monchaise.post("/contact-us", formData).then((res) => {
+      if (res.data.insertedId) {
+        Swal.fire({
+          title: "Good job!",
+          text: "You clicked the button!",
+          icon: "success",
+          showConfirmButton: false,
+          timer:500
+        });
+      }
+    });
     console.log("Submitted data:", formData);
-    // You can send this data to your backend or Firebase
   };
 
   return (
@@ -24,7 +38,6 @@ const ContactUs = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Contact Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block font-medium text-gray-700">Name</label>
@@ -67,7 +80,6 @@ const ContactUs = () => {
             </button>
           </form>
 
-          {/* Contact Info */}
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-semibold text-gray-800">Call Us</h3>

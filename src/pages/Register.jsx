@@ -28,13 +28,15 @@ const Register = () => {
     // console.log(object);
     // console.log(name, email, password);
     console.log(data);
-    axios.post("http://localhost:3000/register", data).then((res) => {
-      console.log(res.data);
+    axios
+      .post("https://assignment-12-wine.vercel.app/register", data)
+      .then((res) => {
+        console.log(res.data);
 
-      if (res.data.insertedId) {
-        toast("Registered!");
-      }
-    });
+        if (res.data.insertedId) {
+          toast("Registered!");
+        }
+      });
     createUser(email, password)
       .then((res) => {
         console.log(res.user);

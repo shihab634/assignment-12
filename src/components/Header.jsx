@@ -18,13 +18,13 @@ const Header = () => {
     },
   ];
   return (
-    <nav className="overflow-x-clip">
+    <nav className="overflow-x-clip bg-red-100 text-red-700">
       {user && (
         <p className="text-center text-white bg-black py-2 bg-opacity-90">
-          Welcome Mr. {user?.displayName} ❤️‍🔥❤️‍🔥. Now You Can be Donor Hero
+          Welcome Mr. {user?.displayName} ❤️‍🔥❤️‍🔥. Now You Can be a Donor Hero
         </p>
       )}
-      <div className="text-center bg-slate-400"></div>
+      <div className="text-center "></div>
       <div className="w-11/12 mx-auto py-5 flex justify-between items-center relative ">
         <Link to="/" className="logo">
           <span className="text-xl font-bold text-stone-700">

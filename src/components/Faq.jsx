@@ -2,10 +2,11 @@ import React from "react";
 
 const Faq = () => {
   return (
-    <div className="mt-10 w-11/12 mx-auto">
+    <div className="bg-white text-black">
+      <div className="py-10 w-11/12 mx-auto bg-white">
       <h2 className="text-3xl text-center text-red-500 mb-10 font-bold">Frequently Asked Questions</h2>
 
-      <div className="collapse bg-base-100 border border-base-300">
+      <div className="collapse  bg-white border border-red-700">
         <input type="radio" name="faq-accordion" defaultChecked />
         <div className="collapse-title font-semibold">Why should I become a blood donor?</div>
         <div className="collapse-content text-sm">
@@ -13,7 +14,7 @@ const Faq = () => {
         </div>
       </div>
 
-      <div className="collapse bg-base-100 border border-base-300">
+      <div className="collapse bg-white border border-red-700">
         <input type="radio" name="faq-accordion" />
         <div className="collapse-title font-semibold">Is it safe to donate blood?</div>
         <div className="collapse-content text-sm">
@@ -21,7 +22,7 @@ const Faq = () => {
         </div>
       </div>
 
-      <div className="collapse bg-base-100 border border-base-300">
+      <div className="collapse bg-white border border-red-700">
         <input type="radio" name="faq-accordion" />
         <div className="collapse-title font-semibold">Who can donate blood?</div>
         <div className="collapse-content text-sm">
@@ -29,7 +30,7 @@ const Faq = () => {
         </div>
       </div>
 
-      <div className="collapse bg-base-100 border border-base-300">
+      <div className="collapse bg-white border border-red-700">
         <input type="radio" name="faq-accordion" />
         <div className="collapse-title font-semibold">How often can I donate blood?</div>
         <div className="collapse-content text-sm">
@@ -37,7 +38,7 @@ const Faq = () => {
         </div>
       </div>
 
-      <div className="collapse bg-base-100 border border-base-300">
+      <div className="collapse bg-white border border-red-700">
         <input type="radio" name="faq-accordion" />
         <div className="collapse-title font-semibold">Do I get paid for donating?</div>
         <div className="collapse-content text-sm">
@@ -45,7 +46,7 @@ const Faq = () => {
         </div>
       </div>
 
-      <div className="collapse bg-base-100 border border-base-300">
+      <div className="collapse bg-white border border-red-700">
         <input type="radio" name="faq-accordion" />
         <div className="collapse-title font-semibold">Can I search for specific blood groups?</div>
         <div className="collapse-content text-sm">
@@ -53,7 +54,7 @@ const Faq = () => {
         </div>
       </div>
 
-      <div className="collapse bg-base-100 border border-base-300">
+      <div className="collapse bg-white border border-red-700">
         <input type="radio" name="faq-accordion" />
         <div className="collapse-title font-semibold">How do I trust the donors?</div>
         <div className="collapse-content text-sm">
@@ -61,7 +62,7 @@ const Faq = () => {
         </div>
       </div>
 
-      <div className="collapse bg-base-100 border border-base-300">
+      <div className="collapse bg-white border border-red-700">
         <input type="radio" name="faq-accordion" />
         <div className="collapse-title font-semibold">Is the donor information kept private?</div>
         <div className="collapse-content text-sm">
@@ -69,7 +70,7 @@ const Faq = () => {
         </div>
       </div>
 
-      <div className="collapse bg-base-100 border border-base-300">
+      <div className="collapse bg-white border border-red-700">
         <input type="radio" name="faq-accordion" />
         <div className="collapse-title font-semibold">How do I become a donor on this site?</div>
         <div className="collapse-content text-sm">
@@ -77,13 +78,14 @@ const Faq = () => {
         </div>
       </div>
 
-      <div className="collapse bg-base-100 border border-base-300">
+      <div className="collapse bg-white border border-red-700">
         <input type="radio" name="faq-accordion" />
         <div className="collapse-title font-semibold">Can I remove my profile anytime?</div>
         <div className="collapse-content text-sm">
           Yes. You have full control over your profile. You can deactivate or delete it from your dashboard anytime.
         </div>
       </div>
+    </div>
     </div>
   );
 };

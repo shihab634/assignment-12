@@ -21,6 +21,7 @@ import AdminVol from "../pages/AdminVolRouting/AdminVol";
 import DonationRequestsPage from "../components/publicFolder/DonationRequestsPage";
 import SingleRequest from "../components/publicFolder/singleRequest";
 import SearchPage from "../components/publicFolder/SearchPage";
+import Blog from "../components/publicFolder/Blog";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -40,6 +41,7 @@ const mainRoutes = createBrowserRouter([
         path: "registration",
         element: <Register></Register>,
       },
+
       {
         path: "donation-requests",
         element: <DonationRequestsPage></DonationRequestsPage>,
@@ -49,9 +51,15 @@ const mainRoutes = createBrowserRouter([
         element: <SearchPage></SearchPage>,
       },
       {
+        path: "/blog",
+        element: <Blog></Blog>,
+      },
+      {
         path: `/donation-requests/:id`,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/single-request/${params.id}`),
+          fetch(
+            `https://assignment-12-wine.vercel.app/single-request/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <SingleRequest></SingleRequest>
@@ -86,13 +94,17 @@ const mainRoutes = createBrowserRouter([
           {
             path: "donation-request-details-edit/:id",
             loader: ({ params }) =>
-              fetch(`http://localhost:3000/single-request/${params.id}`),
+              fetch(
+                `https://assignment-12-wine.vercel.app/single-request/${params.id}`
+              ),
             element: <RequestDetailsEdit></RequestDetailsEdit>,
           },
           {
             path: "donation-request-details/:id",
             loader: ({ params }) =>
-              fetch(`http://localhost:3000/single-request/${params.id}`),
+              fetch(
+                `https://assignment-12-wine.vercel.app/single-request/${params.id}`
+              ),
             element: <RequestDetails></RequestDetails>,
           },
           {
