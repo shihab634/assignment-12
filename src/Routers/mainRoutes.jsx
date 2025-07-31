@@ -18,6 +18,8 @@ import AllRequests from "../pages/Admin/AllRequests";
 import ContentManagement from "../pages/Admin/ContentManagement";
 import AddBlog from "../pages/Admin/AddBlog";
 import AdminVol from "../pages/AdminVolRouting/AdminVol";
+import DonationRequestsPage from "../components/publicFolder/DonationRequestsPage";
+import SingleRequest from "../components/publicFolder/singleRequest";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -36,6 +38,20 @@ const mainRoutes = createBrowserRouter([
       {
         path: "registration",
         element: <Register></Register>,
+      },
+      {
+        path: "donation-requests",
+        element: <DonationRequestsPage></DonationRequestsPage>,
+      },
+      {
+        path: `/donation-requests/:id`,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/single-request/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <SingleRequest></SingleRequest>
+          </PrivateRoute>
+        ),
       },
 
       {
@@ -79,17 +95,17 @@ const mainRoutes = createBrowserRouter([
             element: <AllUsers></AllUsers>,
           },
           {
-            path:'all-blood-donation-request',
-            element:<AdminVol></AdminVol>
+            path: "all-blood-donation-request",
+            element: <AdminVol></AdminVol>,
           },
           {
-            path:'content-management',
-            element:<ContentManagement></ContentManagement>
+            path: "content-management",
+            element: <ContentManagement></ContentManagement>,
           },
           {
-            path:'content-management/add-blog',
-            element:<AddBlog></AddBlog>
-          }
+            path: "content-management/add-blog",
+            element: <AddBlog></AddBlog>,
+          },
         ],
       },
     ],
