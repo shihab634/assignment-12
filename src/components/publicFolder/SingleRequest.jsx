@@ -17,7 +17,7 @@ const SingleRequest = () => {
 
   const handleSave = async () => {
    
-    monchaise.put(`/single-request/${formData._id}`, {donorName:user.displayName,donorEmail:user.email}).then((res) => {
+    monchaise.put(`/single-request/${formData._id}`, {donorName:user.displayName,donorEmail:user.email,status:'inprogress'}).then((res) => {
       console.log(res.data);
       if (res.data.modifiedCount) {
         toast("Updated");

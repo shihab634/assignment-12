@@ -20,6 +20,7 @@ import AddBlog from "../pages/Admin/AddBlog";
 import AdminVol from "../pages/AdminVolRouting/AdminVol";
 import DonationRequestsPage from "../components/publicFolder/DonationRequestsPage";
 import SingleRequest from "../components/publicFolder/singleRequest";
+import SearchPage from "../components/publicFolder/SearchPage";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "donation-requests",
         element: <DonationRequestsPage></DonationRequestsPage>,
+      },
+      {
+        path: "/search",
+        element: <SearchPage></SearchPage>,
       },
       {
         path: `/donation-requests/:id`,

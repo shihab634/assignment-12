@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { CgMenuMotion } from "react-icons/cg";
 import { RiMenuAddLine } from "react-icons/ri";
 import { Link, NavLink } from "react-router";
@@ -6,22 +6,9 @@ import { AuthContext } from "../providers/AuthProvider";
 // import useRoleByEmail from "../hooks/useRoleByEmail";
 
 const Header = () => {
-  // const {role,loading} = useRoleByEmail()
-  // console.log(role,loading);
-  // useEffect(()=>{
-
-  // },[])
+ 
   const { user, logOut } = useContext(AuthContext);
-  // console.log(user);
-  // const  menuItems =[]
-  //   if(loading){
-  //     return <p className="">loading</p>
-  //   }
-  //   if (role == 'admin') {
-  //     menuItems.push(
-  //       <li><NavLink to={'/dashboard/profile'}>Dashboard</NavLink></li>
-  //     )
-  //   }
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPageLoad, setisPageLoad] = useState(false);
   const menu = [
