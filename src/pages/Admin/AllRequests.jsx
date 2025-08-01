@@ -1,14 +1,16 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import useAllRequests from "../../hooks/useAllRequests";
 import useMonchaise from "../../hooks/useMonchaise";
 import { toast, ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router";
+import FilterSelect from "../../components/publicFolder/FilterSelect";
 
 const AllRequests = () => {
   const { requests, setRequests,setCount } = useAllRequests();
   const {user} = use(AuthContext)
+  const [filter, setFilter] = useState("");
   
   const monchaise = useMonchaise();
 
@@ -66,6 +68,11 @@ const AllRequests = () => {
       }
     });
   };
+   
+    const filteredData = filter
+    ? requests.filter((item) => item.status === filter)
+    : requests;
+    
 
   return (
     <div className="w-11/12 mx-auto">
@@ -73,6 +80,7 @@ const AllRequests = () => {
       <p className="text-3xl text-center text-black my-4">
         Welcome Mr.{user?.displayName}
       </p>
+      <FilterSelect onFilterChange={setFilter}></FilterSelect>
       <div className="overflow-x-auto">
         <table className="table rounded-box border border-base-content/5 bg-base-100">
           {/* head */}
@@ -88,14 +96,14 @@ const AllRequests = () => {
             </tr>
           </thead>
           <tbody>
-            {requests?.map((request, index) => (
+            {filteredData?.map((request, index) => (
               <tr className="hover:bg-base-300" key={index}>
                 <th>{index + 1}</th>
                 <td>{request.recipientName}<br />District: {request.district} Upazila: {request.upazila} </td>
                 <td>{request.date} <br />{request.time}</td>
                 <td>{request.bloodGroup}</td>
                 {
-                  request.status =='inprogress'?<div className="flex flex-col"><td>{request?.donorName}</td><td>{request?.donorEmail}</td></div>:<td></td>
+                  request.status =='inprogress'?<td ><td>{request?.donorName}</td><br /><td>{request?.donorEmail}</td></td>:<td></td>
                 }
                 <th>{request.status}</th>
                 <td>

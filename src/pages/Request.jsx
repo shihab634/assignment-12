@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
@@ -9,6 +9,7 @@ import { AuthContext } from "../providers/AuthProvider";
 const Request = () => {
   const { user } = use(AuthContext);
   const { data, setData } = useDonationRequest();
+   const [filter, setFilter] = useState("");
   const monchaise = useMonchaise();
   // console.log(data);
   if (!data) {
@@ -61,16 +62,20 @@ const Request = () => {
       }
     });
   };
-
+const filteredData = filter
+    ? data.filter((item) => item.status === filter)
+    : data;
   return (
-    <div className="w-11/12 mx-auto">
+   <div className="">
+     <FilterSelect onFilterChange={setFilter} />
+     <div className="w-11/12 mx-auto">
       <ToastContainer autoClose={500} />
       <p className="text-3xl text-center text-black my-4">
         Welcome Mr.{user?.displayName}
       </p>
       <div className="overflow-x-auto">
         <table className="table rounded-box border border-base-content/5 bg-base-100">
-          {/* head */}
+         
           <thead>
             <tr>
               <th></th>
@@ -83,16 +88,16 @@ const Request = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.map((request, index) => (
+            {filteredData?.map((request, index) => (
               <tr className="hover:bg-base-300" key={index}>
                 <th>{index + 1}</th>
                 <td>{request.recipientName}<br />District: {request.district} Upazila: {request.upazila} </td>
                 <td>{request.date} <br />{request.time}</td>
                 <td>{request.bloodGroup}</td>
                 {
-                  request.status =='inprogress'?<td>Donor Name</td>:<td></td>
+                  request.status =='inprogress'?<td className=" mx-auto "><td>{request?.donorName}</td><br /><td>{request?.donorEmail}</td></td>:<td></td>
                 }
-                <th>{request.status}</th>
+                <td>{request.status}</td>
                 <td>
                   {request?.status == "inprogress" ? (
                     <div className="join join-vertical">
@@ -114,7 +119,7 @@ const Request = () => {
                       >
                         Delete
                       </button>
-                      <button className="btn join-item">Edit</button>
+
                       <Link
                         className="btn join-item btn-info"
                         to={`../donation-request-details/${request._id}`}
@@ -164,6 +169,7 @@ const Request = () => {
         </div> */}
       </div>
     </div>
+   </div>
   );
 };
 

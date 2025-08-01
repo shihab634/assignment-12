@@ -22,6 +22,9 @@ import DonationRequestsPage from "../components/publicFolder/DonationRequestsPag
 import SingleRequest from "../components/publicFolder/singleRequest";
 import SearchPage from "../components/publicFolder/SearchPage";
 import Blog from "../components/publicFolder/Blog";
+import BlogManager from "../components/publicFolder/BlogManager";
+import AdminVolBlog from "../pages/AdminVolRouting/AminVolBlog";
+import BlogDetails from "../components/publicFolder/BlogDetails";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -53,6 +56,12 @@ const mainRoutes = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "/blog/:id",
+        element: <BlogDetails></BlogDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/single-blog/${params.id}`),
       },
       {
         path: `/donation-requests/:id`,
@@ -115,7 +124,8 @@ const mainRoutes = createBrowserRouter([
           },
           {
             path: "content-management/add-blog",
-            element: <AddBlog></AddBlog>,
+            // element: <AddBlog></AddBlog>,
+            element: <AdminVolBlog></AdminVolBlog>,
           },
         ],
       },

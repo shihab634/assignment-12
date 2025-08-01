@@ -98,7 +98,7 @@ const DonorDashboard = () => {
                 </td>
                 <td>{request.bloodGroup}</td>
                 {
-                  request.status =='inprogress'?<div className="flex flex-col"><td>{request?.donorName}</td><td>{request?.donorEmail}</td></div>:<td></td>
+                  request.status =='inprogress'?<td><td>{request?.donorName}</td><br /><td>{request?.donorEmail}</td></td>:<td></td>
                 }
                 <td>
                   {request?.status == "inprogress" ? (

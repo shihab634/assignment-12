@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import useAllUsers from "../../hooks/useAllUsers";
 import useMonchaise from "../../hooks/useMonchaise";
 import { toast, ToastContainer } from "react-toastify";
@@ -6,7 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 const AllUsers = () => {
   const monchaise = useMonchaise();
 
-  const { data, setCount } = useAllUsers();
+  const { data, setData } = useAllUsers();
 
   const handleSelect = (selectedRole, id) => {
     console.log("Selected Role:", selectedRole);
@@ -16,8 +16,11 @@ const AllUsers = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount) {
-          setCount((prev) => prev + 1);
           toast("Updated Role");
+          const filtered = data.find(x=> x._id == id)
+          filtered.role = selectedRole
+          const rest = data.filter(x=> x._id != id)
+          setData([...rest,filtered])
         }
       });
   };
@@ -30,21 +33,27 @@ const AllUsers = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount) {
-          setCount((prev) => prev + 1);
           toast("Blocked");
+          const filtered = data.find(x=> x._id == id)
+          filtered.status = 'blocked'
+          const rest = data.filter(x=> x._id != id)
+          setData([...rest,filtered])
         }
       });
   };
   const handleActive = (id) => {
-    console.log(id);
+    
 
     monchaise
       .patch(`/change-donor-status/${id}`, { status: "active" })
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount) {
-          setCount((prev) => prev + 1);
           toast("Active");
+          const filtered = data.find(x=> x._id == id)
+          filtered.status = 'active'
+          const rest = data.filter(x=> x._id != id)
+          setData([...rest,filtered])
         }
       });
   };
