@@ -33,10 +33,7 @@ export default function CreateDonation() {
     objectData.createdAt = new Date();
     // console.log(objectData);
     axios
-      .post(
-        "https://assignment-12-wine.vercel.app/donation-request",
-        objectData
-      )
+      .post("http://localhost:3000/donation-request", objectData)
       .then((res) => {
         if (res.data.insertedId) {
           toast("SuccessFully Inserted");

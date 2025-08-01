@@ -3,7 +3,7 @@ import React from "react";
 
 const useAxiosPublic = () => {
   const instance = axios.create({
-    baseURL: "https://assignment-12-wine.vercel.app",
+    baseURL: "http://localhost:3000",
   });
   return instance;
 };

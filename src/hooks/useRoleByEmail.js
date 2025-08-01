@@ -12,9 +12,7 @@ const useRoleByEmail = () => {
   const [donor, setDonor] = useState(null);
   useEffect(() => {
     axios
-      .get(
-        `https://assignment-12-wine.vercel.app/get-user-role?email=${user?.email}`
-      )
+      .get(`http://localhost:3000/get-user-role?email=${user?.email}`)
       .then((res) => {
         // console.log(res.data);
 

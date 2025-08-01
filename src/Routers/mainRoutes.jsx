@@ -57,9 +57,7 @@ const mainRoutes = createBrowserRouter([
       {
         path: `/donation-requests/:id`,
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-12-wine.vercel.app/single-request/${params.id}`
-          ),
+          fetch(`http://localhost:3000/single-request/${params.id}`),
         element: (
           <PrivateRoute>
             <SingleRequest></SingleRequest>
@@ -94,17 +92,13 @@ const mainRoutes = createBrowserRouter([
           {
             path: "donation-request-details-edit/:id",
             loader: ({ params }) =>
-              fetch(
-                `https://assignment-12-wine.vercel.app/single-request/${params.id}`
-              ),
+              fetch(`http://localhost:3000/single-request/${params.id}`),
             element: <RequestDetailsEdit></RequestDetailsEdit>,
           },
           {
             path: "donation-request-details/:id",
             loader: ({ params }) =>
-              fetch(
-                `https://assignment-12-wine.vercel.app/single-request/${params.id}`
-              ),
+              fetch(`http://localhost:3000/single-request/${params.id}`),
             element: <RequestDetails></RequestDetails>,
           },
           {

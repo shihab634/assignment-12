@@ -73,14 +73,14 @@ const AuthProvider = ({ children }) => {
       //     });
       // }
 
-      // fetch("https://assignment-12-wine.vercel.app/email", {
+      // fetch("http://localhost:3000/email", {
       //   method: "GET", // or POST, PUT, DELETE
       //   headers: {
       //     "Coxntent-Type": "application/json",
       //     Authorization: `Bearer ${currentUser?.accessToken}`,
       //   },
       // });
-      // fetch("https://assignment-12-wine.vercel.app", {
+      // fetch("http://localhost:3000", {
       //   headers: {
       //     Authorization: `Bearer ${currentUser?.accessToken}`,
       //   },

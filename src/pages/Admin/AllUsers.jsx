@@ -16,8 +16,8 @@ const AllUsers = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount) {
-          toast("Updated Role");
           setCount((prev) => prev + 1);
+          toast("Updated Role");
         }
       });
   };
@@ -30,8 +30,8 @@ const AllUsers = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount) {
-          toast("Blocked");
           setCount((prev) => prev + 1);
+          toast("Blocked");
         }
       });
   };
@@ -43,8 +43,8 @@ const AllUsers = () => {
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount) {
-          toast("Active");
           setCount((prev) => prev + 1);
+          toast("Active");
         }
       });
   };
@@ -78,18 +78,18 @@ const AllUsers = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">{user.name}</div>
+                      <div className={`font-bold ${user.name == 'Shihab Ullah' && 'text-red-800 text-2xl'}`}>{user.name}</div>
                     </div>
                   </div>
                 </td>
-                <td>{user.email}</td>
+                <td className={`${user.name == 'Shihab Ullah' && 'text-red-800 font-bold text-lg'}`}>{user.email}</td>
                 <td>{user.role}</td>
                 <td>{user.status}</td>
                 <th className="text-white">
                   {user.status == "active" ? (
                     <button
                       onClick={() => handleBlock(user._id)}
-                      className="btn btn-ghost bg-white text-black btn-xs"
+                      className={`btn btn-ghost ${user.name == 'Shihab Ullah' && 'opacity-50 pointer-events-none'} bg-white text-black btn-xs`}
                     >
                       Block
                     </button>
@@ -101,13 +101,13 @@ const AllUsers = () => {
                       Active
                     </button>
                   )}
-                  <div className="dropdown dropdown-hover">
-                    <div tabIndex={0} role="button" className="btn m-1">
+                  <div className={`dropdown dropdown-hover ${user.name == 'Shihab Ullah' && 'opacity-50 pointer-events-none'}`}>
+                    <div tabIndex={0} role="button" className={`btn m-1 `} >
                       Edit
                     </div>
                     <ul
                       tabIndex={0}
-                      className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+                      className={`dropdown-content menu ${user.name == 'Shihab Ullah' && 'opacity-50 pointer-events-none'} bg-red-50 rounded-box z-1 w-52 text-red-800 p-2 text-bold shadow-sm`}
                     >
                       <li>
                         <a onClick={() => handleSelect("admin", user._id)}>

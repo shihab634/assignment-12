@@ -7,9 +7,7 @@ const useDonationRequest = () => {
   const { user } = use(AuthContext);
   useEffect(() => {
     axios
-      .get(
-        `https://assignment-12-wine.vercel.app/donation-request?email=${user?.email}`
-      )
+      .get(`http://localhost:3000/donation-request?email=${user?.email}`)
       .then((res) => {
         console.log(res.data);
         setData(res.data);
