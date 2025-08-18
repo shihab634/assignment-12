@@ -28,16 +28,16 @@ const SingleRequest = () => {
   if (!formData) return <p>Loading...</p>;
 
   return (
-    <div className="p-4 my-10 max-w-xl  mx-auto border rounded">
+    <div className="p-4 my-10 max-w-xl   mx-auto border rounded">
       <ToastContainer autoClose={500} />
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold">Donation Request Details</h2>
         {/* Open the modal using document.getElementById('ID').showModal() method */}
         <button
-          className="btn"
+          className="btn text-green-400"
           onClick={() => document.getElementById("my_modal_1").showModal()}
         >
-          open modal
+          Donate
         </button>
         <dialog id="my_modal_1" className="modal">
           <div className="modal-box">

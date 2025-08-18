@@ -11,7 +11,7 @@ import ContactUs from "./ContactUs";
 const Home = () => {
   return (
     <>
-      <Banner></Banner>
+      {/* <Banner></Banner> */}
       <BannerSection></BannerSection>
       <FeaturedSection></FeaturedSection>
       <ContactUs></ContactUs>

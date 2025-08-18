@@ -6,7 +6,7 @@ const BannerSection = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-red-100 text-center py-20 px-4 rounded-md shadow-md">
+    <div className="bg-red-100 mt-2 text-center py-20 px-4 rounded-md shadow-md">
       <h1 className="text-4xl font-bold text-red-700 mb-6">
         Welcome to Blood Donation Portal
       </h1>

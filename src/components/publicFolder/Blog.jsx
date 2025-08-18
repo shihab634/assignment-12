@@ -17,7 +17,7 @@ const Blog = () => {
         {blogs.map((blog) => (
           <div
             key={blog._id}
-            className="card bg-base-100 shadow-xl border border-base-300"
+            className="card  border bg-white text-black  p-4 rounded   shadow-xl  border-base-300"
           >
             <div className="card-body">
               <h3 className="card-title">{blog.title}</h3>

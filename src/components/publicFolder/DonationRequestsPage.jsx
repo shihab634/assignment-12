@@ -11,11 +11,11 @@ const DonationRequestsPage = () => {
 
 
   return (
-    <div className="p-12 space-y-6">
-      <h2 className="text-2xl font-bold text-center">Pending Donation Requests</h2>
+    <div className="p-12 min-h-screen bg-gray-100 space-y-6">
+      <h2 className="text-2xl font-bold text-center text-black">Pending Donation Requests</h2>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {requests.map((req) => (
-          <div key={req.id} className="card border p-4 rounded shadow">
+          <div key={req.id} className="card border bg-white text-black max-w-md p-6 rounded shadow">
             <h3 className="text-xl font-semibold">{req.recipient}</h3>
             <p><strong>Location:</strong> District: {req.district} Upazila: {req.upazila}</p>
             <p><strong>Blood Group:</strong> {req.bloodGroup}</p>

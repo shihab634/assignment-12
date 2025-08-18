@@ -25,6 +25,7 @@ import Blog from "../components/publicFolder/Blog";
 import BlogManager from "../components/publicFolder/BlogManager";
 import AdminVolBlog from "../pages/AdminVolRouting/AminVolBlog";
 import BlogDetails from "../components/publicFolder/BlogDetails";
+import Funding from "../components/publicFolder/Funding";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -58,15 +59,23 @@ const mainRoutes = createBrowserRouter([
         element: <Blog></Blog>,
       },
       {
+        path:'/funding',
+        element:<Funding></Funding>
+      },
+      {
         path: "/blog/:id",
         element: <BlogDetails></BlogDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/single-blog/${params.id}`),
+          fetch(
+            `https://assignment-12-wine.vercel.app/single-blog/${params.id}`
+          ),
       },
       {
         path: `/donation-requests/:id`,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/single-request/${params.id}`),
+          fetch(
+            `https://assignment-12-wine.vercel.app/single-request/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <SingleRequest></SingleRequest>
@@ -101,13 +110,17 @@ const mainRoutes = createBrowserRouter([
           {
             path: "donation-request-details-edit/:id",
             loader: ({ params }) =>
-              fetch(`http://localhost:3000/single-request/${params.id}`),
+              fetch(
+                `https://assignment-12-wine.vercel.app/single-request/${params.id}`
+              ),
             element: <RequestDetailsEdit></RequestDetailsEdit>,
           },
           {
             path: "donation-request-details/:id",
             loader: ({ params }) =>
-              fetch(`http://localhost:3000/single-request/${params.id}`),
+              fetch(
+                `https://assignment-12-wine.vercel.app/single-request/${params.id}`
+              ),
             element: <RequestDetails></RequestDetails>,
           },
           {

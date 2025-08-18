@@ -45,7 +45,7 @@ const Header = () => {
               <NavLink to="/search">Search Page</NavLink>
               <NavLink to="/donation-requests">Blood Donation Requests</NavLink>
               <NavLink to="/blog">Blog</NavLink>
-              <NavLink to="/">Funding</NavLink>
+              <NavLink to="/funding">Funding</NavLink>
 
               <div className="avatar">
                 <div className="w-10">
@@ -61,7 +61,7 @@ const Header = () => {
               <NavLink to="/search">Search Page</NavLink>
               <NavLink to="/donation-requests">Blood Donation Requests</NavLink>
               <NavLink to="/blog">Blog</NavLink>
-              <NavLink to="/">Funding</NavLink>
+              <NavLink to="/funding">Funding</NavLink>
               <NavLink to="/login">Login</NavLink>
               <NavLink to="/registration">Register</NavLink>
             </>
