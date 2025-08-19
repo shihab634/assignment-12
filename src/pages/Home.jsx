@@ -7,6 +7,8 @@ import Faq from "../components/Faq";
 import BannerSection from "./BannerSection";
 import FeaturedSection from "./FeaturedSection";
 import ContactUs from "./ContactUs";
+import Carouse from "../components/publicFolder/Carouse";
+import AllUser from "./AdminVolRouting/AllUser";
 
 const Home = () => {
   return (
@@ -14,6 +16,8 @@ const Home = () => {
       {/* <Banner></Banner> */}
       <BannerSection></BannerSection>
       <FeaturedSection></FeaturedSection>
+      <Carouse></Carouse>
+      <AllUser></AllUser>
       <ContactUs></ContactUs>
       <Faq></Faq>
     </>
