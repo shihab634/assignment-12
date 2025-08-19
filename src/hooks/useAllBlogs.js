@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useMonchaise from './useMonchaise';
 
 const useAllBlogs = () => {
-  const [blogs,setBlogs]= useState([])
+  const [blogs,setBlogs]= useState(null)
   const monchaise = useMonchaise()
   useEffect(()=>{
     monchaise.get('post-blog').then(res=>{
