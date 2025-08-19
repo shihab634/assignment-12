@@ -26,12 +26,13 @@ import BlogManager from "../components/publicFolder/BlogManager";
 import AdminVolBlog from "../pages/AdminVolRouting/AminVolBlog";
 import BlogDetails from "../components/publicFolder/BlogDetails";
 import Funding from "../components/publicFolder/Funding";
+import Error from "../pages/Error";
 
 const mainRoutes = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
-    // errorElement: <Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",

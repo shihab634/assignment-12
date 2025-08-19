@@ -46,6 +46,12 @@ export default function DashboardSidebar() {
           label="Content Management Page 📝
 "
         />
+        <NavItem
+          to="/dashboard/profile"
+          // icon={<BookOpen size={20} />}
+          label="Admin Profile
+"
+        />
       </nav>
     );
   if (role === "volunteer")
@@ -65,6 +71,11 @@ export default function DashboardSidebar() {
           to="/dashboard/content-management"
           // icon={<Home size={20} />}
           label="Content Management Page"
+        />
+        <NavItem
+          to="/dashboard/profile"
+          // icon={<Home size={20} />}
+          label="Profile"
         />
       </nav>
     );

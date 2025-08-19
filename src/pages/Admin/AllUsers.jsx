@@ -17,10 +17,10 @@ const AllUsers = () => {
         console.log(res.data);
         if (res.data.modifiedCount) {
           toast("Updated Role");
-          const filtered = data.find(x=> x._id == id)
-          filtered.role = selectedRole
-          const rest = data.filter(x=> x._id != id)
-          setData([...rest,filtered])
+          const filtered = data.find((x) => x._id == id);
+          filtered.role = selectedRole;
+          const rest = data.filter((x) => x._id != id);
+          setData([...rest, filtered]);
         }
       });
   };
@@ -34,31 +34,40 @@ const AllUsers = () => {
         console.log(res.data);
         if (res.data.modifiedCount) {
           toast("Blocked");
-          const filtered = data.find(x=> x._id == id)
-          filtered.status = 'blocked'
-          const rest = data.filter(x=> x._id != id)
-          setData([...rest,filtered])
+          const filtered = data.find((x) => x._id == id);
+          filtered.status = "blocked";
+          const rest = data.filter((x) => x._id != id);
+          setData([...rest, filtered]);
         }
       });
   };
   const handleActive = (id) => {
-    
-
     monchaise
       .patch(`/change-donor-status/${id}`, { status: "active" })
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount) {
           toast("Active");
-          const filtered = data.find(x=> x._id == id)
-          filtered.status = 'active'
-          const rest = data.filter(x=> x._id != id)
-          setData([...rest,filtered])
+          const filtered = data.find((x) => x._id == id);
+          filtered.status = "active";
+          const rest = data.filter((x) => x._id != id);
+          setData([...rest, filtered]);
         }
       });
   };
   if (!data) {
-    return <p className="text-lime-400 text-4xl">loading</p>;
+    return (
+      <div className="flex justify-center ">
+        <span className="loading loading-spinner w-14 text-primary"></span>
+        <span className="loading loading-spinner w-14 text-secondary"></span>
+        <span className="loading loading-spinner w-14 text-accent"></span>
+        <span className="loading loading-spinner w-14 text-neutral"></span>
+        <span className="loading loading-spinner w-14 text-info"></span>
+        <span className="loading loading-spinner w-14 text-success"></span>
+        <span className="loading loading-spinner w-14 text-warning"></span>
+        <span className="loading loading-spinner w-14 text-error"></span>
+      </div>
+    );
   }
   return (
     <div className="text-black ">
@@ -87,18 +96,34 @@ const AllUsers = () => {
                       </div>
                     </div>
                     <div>
-                      <div className={`font-bold ${user.name == 'Shihab Ullah' && 'text-red-800 text-2xl'}`}>{user.name}</div>
+                      <div
+                        className={`font-bold ${
+                          user.name == "Shihab Ullah" && "text-red-800 text-2xl"
+                        }`}
+                      >
+                        {user.name}
+                      </div>
                     </div>
                   </div>
                 </td>
-                <td className={`${user.name == 'Shihab Ullah' && 'text-red-800 font-bold text-lg'}`}>{user.email}</td>
+                <td
+                  className={`${
+                    user.name == "Shihab Ullah" &&
+                    "text-red-800 font-bold text-lg"
+                  }`}
+                >
+                  {user.email}
+                </td>
                 <td>{user.role}</td>
                 <td>{user.status}</td>
                 <th className="text-white">
                   {user.status == "active" ? (
                     <button
                       onClick={() => handleBlock(user._id)}
-                      className={`btn btn-ghost ${user.name == 'Shihab Ullah' && 'opacity-50 pointer-events-none'} bg-white text-black btn-xs`}
+                      className={`btn btn-ghost ${
+                        user.name == "Shihab Ullah" &&
+                        "opacity-50 pointer-events-none"
+                      } bg-white text-black btn-xs`}
                     >
                       Block
                     </button>
@@ -110,13 +135,21 @@ const AllUsers = () => {
                       Active
                     </button>
                   )}
-                  <div className={`dropdown dropdown-hover ${user.name == 'Shihab Ullah' && 'opacity-50 pointer-events-none'}`}>
-                    <div tabIndex={0} role="button" className={`btn m-1 `} >
+                  <div
+                    className={`dropdown dropdown-hover ${
+                      user.name == "Shihab Ullah" &&
+                      "opacity-50 pointer-events-none"
+                    }`}
+                  >
+                    <div tabIndex={0} role="button" className={`btn m-1 `}>
                       Edit
                     </div>
                     <ul
                       tabIndex={0}
-                      className={`dropdown-content menu ${user.name == 'Shihab Ullah' && 'opacity-50 pointer-events-none'} bg-red-50 rounded-box z-1 w-52 text-red-800 p-2 text-bold shadow-sm`}
+                      className={`dropdown-content menu ${
+                        user.name == "Shihab Ullah" &&
+                        "opacity-50 pointer-events-none"
+                      } bg-red-50 rounded-box z-1 w-52 text-red-800 p-2 text-bold shadow-sm`}
                     >
                       <li>
                         <a onClick={() => handleSelect("admin", user._id)}>

@@ -11,9 +11,7 @@ const monchaise = useMonchaise()
   useEffect(() => {
     setFormData(data)
   }, [data]);
-// if (!data) {
-//   return <p className="text-4xl text-blue-400 text-ce">Loading</p>
-// }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));

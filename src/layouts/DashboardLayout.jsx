@@ -10,7 +10,7 @@ const DashboardLayout = () => {
   return (
     <div className="min-h-screen flex bg-red-50">
       {/* Sidebar */}
-      <aside className="w-64 bg-red-100 shadow-md p-5 hidden md:block">
+      <aside className=" w-36 md:w-64 bg-red-100 shadow-md p-5 ">
         <div className="text-2xl font-bold mb-10 text-center text-red-700">
           BloodSwap Hub
         </div>

@@ -15,7 +15,16 @@ const Profile = () => {
     setFormData(donor);
   }, [donor]);
   if (!donor) {
-    return <p className="text-4xl text-teal-400 text-center">Loading</p>;
+    return <div className="flex justify-center text-4xl">
+        <span className="loading loading-spinner w-14 text-primary"></span>
+        <span className="loading loading-spinner w-14 text-secondary"></span>
+        <span className="loading loading-spinner w-14 text-accent"></span>
+        <span className="loading loading-spinner w-14 text-neutral"></span>
+        <span className="loading loading-spinner w-14 text-info"></span>
+        <span className="loading loading-spinner w-14 text-success"></span>
+        <span className="loading loading-spinner w-14 text-warning"></span>
+        <span className="loading loading-spinner w-14 text-error"></span>
+      </div>
   }
 
   const handleChange = (e) => {
